@@ -41,16 +41,17 @@ For each class, I used:
 - Collected some variation in facial expressions so the model wouldn’t just memorize a single pattern.
   
 # When the Model Fails
-- The model sometimes fails when the lighting is very dim or too bright, or when the camera angle is very different from the training images
+- The model fails most of the time when the lighting is very dim or too bright, or when the camera angle is very different from the training images
   
 # Difficult Classes to Train
-- Wink Left vs Wink Right
-The model often confused these two classes because the images were just flipped versions of each other, so it couldn’t reliably distinguish left from right.
+-The model performs poorly on most classes and fails to accurately recognize the intended gestures in the majority of cases. The only class that shows reliable predictions is neutral; all other gestures are frequently misclassified or not detected at all.
+- The model often confused with Wink Left vs Wink Right because the images were just flipped versions of each other, so it couldn’t reliably distinguish left from right.
 - Neutral vs Smiling
 The neutral face was sometimes misclassified as smiling, likely because subtle smiles or slight facial movements in neutral expressions confused the model.
+- Doesn't really recognize when my mouth is open nor when I raise my eyebrows. 
 
 # Increasing the Number of Classes
-Yes, performance got harder to maintain as we added more classes. With only 2–3 gestures the model was very accurate, but with 6 classes, some probabilities became closer and misclassifications increased. This is because the model had to split its “attention” among more categories with the same number of training examples.
+As more classes were added, maintaining performance became more difficult. With only 2–3 gestures, the model could clearly distinguish between classes, leading to higher accuracy. When expanded to 6 classes, the probabilities for different classes became closer, and misclassifications increased. This is likely due to limited training data per class, which made it harder for the model to learn distinctive features for each gesture.
 
 # Robustness to Environment
 - The model is not very robust to changes in environment:
@@ -60,5 +61,5 @@ Yes, performance got harder to maintain as we added more classes. With only 2–
 - This suggests that the dataset needs more diverse examples to make the model more robust.
   
 # Surprising Results
-- The model learned Mouth Open and Neutral very well, even with a relatively small number of examples.
-- These gestures are visually distinct (for Mouth Open) or consistent (for Neutral), making them easier for the model to detect than subtle differences like winks.
+- The model could recognize a human face.
+- 

@@ -2,6 +2,41 @@
 <button type="button" onclick="init()">Start</button>
 <div id="webcam-container"></div>
 <div id="label-container"></div>
+
+<style>
+    body {
+  background-color: #f9f6ee; /* soft off-white */
+  margin: 0;
+  padding: 40;
+  font-family: "Anton", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers horizontally */
+  justify-content: flex-start; /* or center for vertical centering too */
+  min-height: 100vh;
+}
+
+#main-container {
+  display: flex;
+  align-items: flex-start; /* aligns webcam and labels at the top */
+  margin-top: 20px; /* space from top */
+}
+
+#webcam-container canvas {
+  border-radius: 10%;
+  border: 5px solid rgb(148, 53, 19);
+  box-shadow: 0 0 20px rgba(28, 30, 17, 0.3);
+}
+
+#label-container div {
+  color: rgb(158, 68, 48);
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: "Anton", sans-serif;
+  line-height: 1.6;
+  }
+  
+</style>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
@@ -9,7 +44,7 @@
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
     // the link to your model provided by Teachable Machine export panel
-    const URL = "./my_model/";
+    const URL = "./Model/";
 
     let model, webcam, labelContainer, maxPredictions;
 
@@ -27,7 +62,7 @@
 
         // Convenience function to setup a webcam
         const flip = true; // whether to flip the webcam
-        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        webcam = new tmImage.Webcam(700, 500, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         await webcam.play();
         window.requestAnimationFrame(loop);
